@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA9BAF42B4D2BA700EE2925 /* FlagKit */; };
 		1CE335272B4B5B3500CABBE2 /* moneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* moneyXchangerApp.swift */; };
 		1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335282B4B5B3500CABBE2 /* ContentView.swift */; };
 		1CE3352B2B4B5B3600CABBE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = moneyXchanger;
+			packageProductDependencies = (
+				1CA9BAF42B4D2BA700EE2925 /* FlagKit */,
+			);
 			productName = moneyXchanger;
 			productReference = 1CE335232B4B5B3500CABBE2 /* moneyXchanger.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 1CE3351A2B4B5B3500CABBE2;
+			packageReferences = (
+				1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */,
+			);
 			productRefGroup = 1CE335242B4B5B3500CABBE2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -588,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/madebybowtie/FlagKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1CA9BAF42B4D2BA700EE2925 /* FlagKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */;
+			productName = FlagKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CE3351B2B4B5B3500CABBE2 /* Project object */;
 }
