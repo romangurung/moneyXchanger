@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CE335272B4B5B3500CABBE2 /* moneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* moneyXchangerApp.swift */; };
+		1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA9BAF42B4D2BA700EE2925 /* FlagKit */; };
+		1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */; };
 		1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335282B4B5B3500CABBE2 /* ContentView.swift */; };
 		1CE3352B2B4B5B3600CABBE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */; };
 		1CE3352E2B4B5B3600CABBE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3352D2B4B5B3600CABBE2 /* Preview Assets.xcassets */; };
-		1CE335382B4B5B3600CABBE2 /* moneyXchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335372B4B5B3600CABBE2 /* moneyXchangerTests.swift */; };
-		1CE335422B4B5B3600CABBE2 /* moneyXchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335412B4B5B3600CABBE2 /* moneyXchangerUITests.swift */; };
-		1CE335442B4B5B3600CABBE2 /* moneyXchangerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335432B4B5B3600CABBE2 /* moneyXchangerUITestsLaunchTests.swift */; };
+		1CE335382B4B5B3600CABBE2 /* MoneyXchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */; };
+		1CE335422B4B5B3600CABBE2 /* MoneyXchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335412B4B5B3600CABBE2 /* MoneyXchangerUITests.swift */; };
+		1CE335442B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335432B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,15 +36,15 @@
 
 /* Begin PBXFileReference section */
 		1CE335232B4B5B3500CABBE2 /* moneyXchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyXchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE335262B4B5B3500CABBE2 /* moneyXchangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyXchangerApp.swift; sourceTree = "<group>"; };
+		1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerApp.swift; sourceTree = "<group>"; };
 		1CE335282B4B5B3500CABBE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CE3352D2B4B5B3600CABBE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1CE335332B4B5B3600CABBE2 /* moneyXchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moneyXchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE335372B4B5B3600CABBE2 /* moneyXchangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyXchangerTests.swift; sourceTree = "<group>"; };
+		1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerTests.swift; sourceTree = "<group>"; };
 		1CE3353D2B4B5B3600CABBE2 /* moneyXchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moneyXchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE335412B4B5B3600CABBE2 /* moneyXchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyXchangerUITests.swift; sourceTree = "<group>"; };
-		1CE335432B4B5B3600CABBE2 /* moneyXchangerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moneyXchangerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1CE335412B4B5B3600CABBE2 /* MoneyXchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerUITests.swift; sourceTree = "<group>"; };
+		1CE335432B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +96,7 @@
 		1CE335252B4B5B3500CABBE2 /* moneyXchanger */ = {
 			isa = PBXGroup;
 			children = (
-				1CE335262B4B5B3500CABBE2 /* moneyXchangerApp.swift */,
+				1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */,
 				1CE335282B4B5B3500CABBE2 /* ContentView.swift */,
 				1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */,
 				1CE3352C2B4B5B3600CABBE2 /* Preview Content */,
@@ -113,7 +115,7 @@
 		1CE335362B4B5B3600CABBE2 /* moneyXchangerTests */ = {
 			isa = PBXGroup;
 			children = (
-				1CE335372B4B5B3600CABBE2 /* moneyXchangerTests.swift */,
+				1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */,
 			);
 			path = moneyXchangerTests;
 			sourceTree = "<group>";
@@ -121,8 +123,8 @@
 		1CE335402B4B5B3600CABBE2 /* moneyXchangerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1CE335412B4B5B3600CABBE2 /* moneyXchangerUITests.swift */,
-				1CE335432B4B5B3600CABBE2 /* moneyXchangerUITestsLaunchTests.swift */,
+				1CE335412B4B5B3600CABBE2 /* MoneyXchangerUITests.swift */,
+				1CE335432B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift */,
 			);
 			path = moneyXchangerUITests;
 			sourceTree = "<group>";
@@ -137,12 +139,16 @@
 				1CE3351F2B4B5B3500CABBE2 /* Sources */,
 				1CE335202B4B5B3500CABBE2 /* Frameworks */,
 				1CE335212B4B5B3500CABBE2 /* Resources */,
+				1C6F331A2B54E6DF00FB938D /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = moneyXchanger;
+			packageProductDependencies = (
+				1CA9BAF42B4D2BA700EE2925 /* FlagKit */,
+			);
 			productName = moneyXchanger;
 			productReference = 1CE335232B4B5B3500CABBE2 /* moneyXchanger.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 1CE3351A2B4B5B3500CABBE2;
+			packageReferences = (
+				1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */,
+			);
 			productRefGroup = 1CE335242B4B5B3500CABBE2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,13 +261,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C6F331A2B54E6DF00FB938D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1CE3351F2B4B5B3500CABBE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */,
-				1CE335272B4B5B3500CABBE2 /* moneyXchangerApp.swift in Sources */,
+				1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CE335382B4B5B3600CABBE2 /* moneyXchangerTests.swift in Sources */,
+				1CE335382B4B5B3600CABBE2 /* MoneyXchangerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +304,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CE335422B4B5B3600CABBE2 /* moneyXchangerUITests.swift in Sources */,
-				1CE335442B4B5B3600CABBE2 /* moneyXchangerUITestsLaunchTests.swift in Sources */,
+				1CE335422B4B5B3600CABBE2 /* MoneyXchangerUITests.swift in Sources */,
+				1CE335442B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +454,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moneyXchanger/Preview Content\"";
 				DEVELOPMENT_TEAM = 4386S7QABL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,6 +484,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"moneyXchanger/Preview Content\"";
 				DEVELOPMENT_TEAM = 4386S7QABL;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -588,6 +620,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/madebybowtie/FlagKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1CA9BAF42B4D2BA700EE2925 /* FlagKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CA9BAF32B4D2BA700EE2925 /* XCRemoteSwiftPackageReference "FlagKit" */;
+			productName = FlagKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CE3351B2B4B5B3500CABBE2 /* Project object */;
 }
