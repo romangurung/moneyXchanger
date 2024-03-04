@@ -10,6 +10,11 @@
 		1C11BB672B947778004DE9C1 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11BB662B947778004DE9C1 /* RequestProtocol.swift */; };
 		1C11BB692B947864004DE9C1 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11BB682B947864004DE9C1 /* RequestMethod.swift */; };
 		1C6D935D2B950B940044A779 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D935C2B950B940044A779 /* NetworkError.swift */; };
+		1C6D935F2B959C320044A779 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D935E2B959C320044A779 /* DataParser.swift */; };
+		1C6D93622B95A11A0044A779 /* AccessTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D93612B95A11A0044A779 /* AccessTokenManager.swift */; };
+		1C6D93652B95A17B0044A779 /* APIToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D93642B95A17B0044A779 /* APIToken.swift */; };
+		1C6D93672B95A2920044A779 /* AuthTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D93662B95A2920044A779 /* AuthTokenRequest.swift */; };
+		1C6D93692B95A7C30044A779 /* AppUserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D93682B95A7C30044A779 /* AppUserDefaultsKeys.swift */; };
 		1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA9BAF42B4D2BA700EE2925 /* FlagKit */; };
 		1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */; };
 		1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335282B4B5B3500CABBE2 /* ContentView.swift */; };
@@ -43,6 +48,11 @@
 		1C11BB662B947778004DE9C1 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		1C11BB682B947864004DE9C1 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		1C6D935C2B950B940044A779 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1C6D935E2B959C320044A779 /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		1C6D93612B95A11A0044A779 /* AccessTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenManager.swift; sourceTree = "<group>"; };
+		1C6D93642B95A17B0044A779 /* APIToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIToken.swift; sourceTree = "<group>"; };
+		1C6D93662B95A2920044A779 /* AuthTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenRequest.swift; sourceTree = "<group>"; };
+		1C6D93682B95A7C30044A779 /* AppUserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaultsKeys.swift; sourceTree = "<group>"; };
 		1CE335232B4B5B3500CABBE2 /* moneyXchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyXchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerApp.swift; sourceTree = "<group>"; };
 		1CE335282B4B5B3500CABBE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,8 +97,28 @@
 				1C11BB662B947778004DE9C1 /* RequestProtocol.swift */,
 				1C11BB682B947864004DE9C1 /* RequestMethod.swift */,
 				1C6D935C2B950B940044A779 /* NetworkError.swift */,
+				1C6D935E2B959C320044A779 /* DataParser.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1C6D93602B95A0340044A779 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				1C6D93632B95A1620044A779 /* Model */,
+				1C6D93612B95A11A0044A779 /* AccessTokenManager.swift */,
+				1C6D93662B95A2920044A779 /* AuthTokenRequest.swift */,
+				1C6D93682B95A7C30044A779 /* AppUserDefaultsKeys.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		1C6D93632B95A1620044A779 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C6D93642B95A17B0044A779 /* APIToken.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1CE3351A2B4B5B3500CABBE2 = {
@@ -116,6 +146,7 @@
 			children = (
 				1C11BB652B945C21004DE9C1 /* Info.plist */,
 				1C11BB642B945A3C004DE9C1 /* Config.xcconfig */,
+				1C6D93602B95A0340044A779 /* Token */,
 				1C11BB632B8C0843004DE9C1 /* Network */,
 				1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */,
 				1CE335282B4B5B3500CABBE2 /* ContentView.swift */,
@@ -309,9 +340,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C11BB692B947864004DE9C1 /* RequestMethod.swift in Sources */,
+				1C6D93672B95A2920044A779 /* AuthTokenRequest.swift in Sources */,
+				1C6D93692B95A7C30044A779 /* AppUserDefaultsKeys.swift in Sources */,
 				1C11BB672B947778004DE9C1 /* RequestProtocol.swift in Sources */,
+				1C6D935F2B959C320044A779 /* DataParser.swift in Sources */,
 				1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */,
+				1C6D93652B95A17B0044A779 /* APIToken.swift in Sources */,
 				1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */,
+				1C6D93622B95A11A0044A779 /* AccessTokenManager.swift in Sources */,
 				1C6D935D2B950B940044A779 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

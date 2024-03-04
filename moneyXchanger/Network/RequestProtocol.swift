@@ -15,15 +15,17 @@ protocol RequestProtocol {
     var headers: [String: String]? { get }
     var body: [String: Any]? { get }
     var urlParams: [String: String]? { get }
+    var addAuthorizationToken: Bool { get }
 }
 
 extension RequestProtocol {
     var scheme: String { "https" }
     var host: String { "openexchangerates.org" }
+    var urlParams: [String: String]? { nil }
 }
 
 extension RequestProtocol {
-    func createURLRequest() throws -> URLRequest {
+    func createURLRequest(authToken: String) throws -> URLRequest {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
@@ -40,6 +42,10 @@ extension RequestProtocol {
 
         if let headers, !headers.isEmpty {
             urlRequest.allHTTPHeaderFields = headers
+        }
+
+        if addAuthorizationToken {
+          urlRequest.setValue(authToken, forHTTPHeaderField: "Authorization")
         }
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
