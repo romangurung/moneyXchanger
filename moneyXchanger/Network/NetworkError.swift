@@ -13,16 +13,22 @@ enum NetworkError: Error {
     case noResponse
     case unauthorized
     case unexpectedStatusCode
+    case requestFailed
+    case serverError
     case unknown
 
     var errorDescription: String {
         switch self {
         case .decode:
-            return "Decode error"
+            "Decode error"
         case .unauthorized:
-            return "Session expired"
+            "Session expired"
+        case .requestFailed:
+            "Request failed"
+        case .serverError:
+            "Server error"
         default:
-            return "Unknown error"
+            "Unknown error"
         }
     }
 }
