@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C11BB672B947778004DE9C1 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11BB662B947778004DE9C1 /* RequestProtocol.swift */; };
+		1C11BB692B947864004DE9C1 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C11BB682B947864004DE9C1 /* RequestMethod.swift */; };
+		1C6D935D2B950B940044A779 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6D935C2B950B940044A779 /* NetworkError.swift */; };
 		1CA9BAF52B4D2BA700EE2925 /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA9BAF42B4D2BA700EE2925 /* FlagKit */; };
 		1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */; };
 		1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335282B4B5B3500CABBE2 /* ContentView.swift */; };
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C11BB642B945A3C004DE9C1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = SOURCE_ROOT; };
+		1C11BB652B945C21004DE9C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C11BB662B947778004DE9C1 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		1C11BB682B947864004DE9C1 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		1C6D935C2B950B940044A779 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1CE335232B4B5B3500CABBE2 /* moneyXchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moneyXchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerApp.swift; sourceTree = "<group>"; };
 		1CE335282B4B5B3500CABBE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C11BB632B8C0843004DE9C1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1C11BB662B947778004DE9C1 /* RequestProtocol.swift */,
+				1C11BB682B947864004DE9C1 /* RequestMethod.swift */,
+				1C6D935C2B950B940044A779 /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		1CE3351A2B4B5B3500CABBE2 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +114,9 @@
 		1CE335252B4B5B3500CABBE2 /* moneyXchanger */ = {
 			isa = PBXGroup;
 			children = (
+				1C11BB652B945C21004DE9C1 /* Info.plist */,
+				1C11BB642B945A3C004DE9C1 /* Config.xcconfig */,
+				1C11BB632B8C0843004DE9C1 /* Network */,
 				1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */,
 				1CE335282B4B5B3500CABBE2 /* ContentView.swift */,
 				1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */,
@@ -287,8 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C11BB692B947864004DE9C1 /* RequestMethod.swift in Sources */,
+				1C11BB672B947778004DE9C1 /* RequestProtocol.swift in Sources */,
 				1CE335292B4B5B3500CABBE2 /* ContentView.swift in Sources */,
 				1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */,
+				1C6D935D2B950B940044A779 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +351,7 @@
 /* Begin XCBuildConfiguration section */
 		1CE335452B4B5B3600CABBE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C11BB642B945A3C004DE9C1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -390,6 +415,7 @@
 		};
 		1CE335462B4B5B3600CABBE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C11BB642B945A3C004DE9C1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -456,6 +482,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = moneyXchanger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -486,6 +513,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = moneyXchanger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
