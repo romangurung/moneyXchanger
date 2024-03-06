@@ -11,7 +11,6 @@ protocol RequestManagerProtocol {
     func perform<T: Decodable>(_ request: RequestProtocol) async throws -> T
 }
 
-
 final class RequestManager: RequestManagerProtocol {
     let networkManager: NetworkManagerProtocol
     let parser: DataParserProtocol
