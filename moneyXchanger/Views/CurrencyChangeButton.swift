@@ -6,21 +6,19 @@
 //
 
 import SwiftUI
-import FlagKit
 
 struct CurrencyChangeButton: View {
-    @Binding var countryCode: String
+    @State private var imageName: String = "BR"
 
     var body: some View {
         Button {
 
         } label: {
             VStack(alignment: .leading) {
-                let flag = Flag(countryCode: countryCode)
-                Image(uiImage: flag?.originalImage ?? UIImage())
+                Image(imageName)
                     .resizable()
-                    .frame(width: 40, height: 40)
-                Text("ADD")
+                    .frame(width: 30, height: 20)
+                Text("NPR")
                     .font(.system(size: 16))
             }
         }
@@ -28,5 +26,5 @@ struct CurrencyChangeButton: View {
 }
 
 #Preview {
-    CurrencyChangeButton(countryCode: .constant("NP"))
+    CurrencyChangeButton()
 }

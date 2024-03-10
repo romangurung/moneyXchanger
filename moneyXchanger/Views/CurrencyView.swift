@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct CurrencyView: View {
+    @State private var amount = 788.00000009899
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+        HStack {
+            CurrencyChangeButton()
+            Spacer()
+            Text(amount, format: .currency(code: "SAR"))
+                .lineLimit(1)
+        }
+        .padding(.leading)
+        .padding(.trailing)
+
+
+
     }
 }
 
