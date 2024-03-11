@@ -10,9 +10,13 @@ import Foundation
 struct LatestExchangeRatesResponse: Decodable {
     let disclaimer: String
     let license: String
-    let timestamp: String
+    let timestamp: Double
     let base: String
     let rates: Rates
+
+    var timestampDate: Date {
+        Date(timeIntervalSince1970: TimeInterval(timestamp))
+    }
 }
 
 struct Rates: Decodable {
