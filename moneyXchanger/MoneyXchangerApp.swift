@@ -11,7 +11,7 @@ import SwiftUI
 struct MoneyXchangerApp: App {
     var body: some Scene {
         WindowGroup {
-            CurrencySelectionView()
+            CurrencyConverterView()
         }
     }
 }

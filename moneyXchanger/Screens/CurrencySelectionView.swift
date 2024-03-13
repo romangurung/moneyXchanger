@@ -10,12 +10,18 @@ import SwiftUI
 struct CurrencySelectionView: View {
 
     @State private var viewModel = CurrencySelectionViewModel()
+    @Binding var selectedCountry: Country
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(viewModel.searchCountries, id: \.self) { country in
                     CurrencySelectionListCell(country: country)
+                        .onTapGesture {
+                            self.selectedCountry = country
+                            dismiss()
+                        }
                 }
             }
         }
@@ -24,5 +30,5 @@ struct CurrencySelectionView: View {
 }
 
 #Preview {
-    CurrencySelectionView()
+    CurrencySelectionView(selectedCountry: .constant(.unitedStates))
 }

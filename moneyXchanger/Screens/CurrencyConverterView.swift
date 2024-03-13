@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct CurrencyConverterView: View {
+    @State private var viewModel = CurrencyConverterViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                VStack {
+                    Text("\(Date().formatted(date: .abbreviated, time: .shortened))")
+                    Text("1 USD = 0.92 EUR")
+                }
+            }
+            CurrencyChangeButton(selectedCountry: viewModel.selectedCountry)
+            Divider()
+            CurrencyChangeButton(selectedCountry: viewModel.convertedCountry)
+            KeypadView()
+        }
     }
 }
 
