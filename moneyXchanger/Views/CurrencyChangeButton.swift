@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CurrencyChangeButton: View {
-    @State var selectedCountry: Country
+    @Binding var selectedCountry: Country
     @State private var isShowingSheet = false
+    var amount: Double
 
     var body: some View {
         Button {
@@ -24,7 +25,7 @@ struct CurrencyChangeButton: View {
                         .font(.system(size: 16))
                 }
                 Spacer()
-                Text(1234, format: .currency(code: "SAR"))
+                Text(amount, format: .currency(code: selectedCountry.currencyCode))
                     .bold()
                     .font(.title3)
                     .lineLimit(1)
@@ -38,5 +39,5 @@ struct CurrencyChangeButton: View {
 }
 
 #Preview {
-    CurrencyChangeButton(selectedCountry: .unitedStates)
+    CurrencyChangeButton(selectedCountry: .constant(.unitedStates), amount: 123.0)
 }

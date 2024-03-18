@@ -12,7 +12,7 @@ enum OpenExchangeRatesProvider: RequestProtocol {
     case getLatestExchangeRate
 
     var path: String {
-        "api/latest.json"
+        "/api/latest.json"
     }
 
     var method: RequestMethod {
@@ -28,7 +28,7 @@ enum OpenExchangeRatesProvider: RequestProtocol {
     }
 
     var urlParams: [String: String]? {
-        guard let appID = Bundle.main.infoDictionary?["API_KEY"] as? String else {
+        guard let appID = Bundle.main.infoDictionary?["APP_ID"] as? String else {
             return nil
         }
         return ["app_id": appID]
