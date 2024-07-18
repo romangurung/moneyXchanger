@@ -21,7 +21,7 @@ enum KeypadButton: String {
     case add = "+"
     case subtract = "-"
     case divide = "÷"
-    case mutliply = "x"
+    case multiply = "x"
     case equal = "="
     case clear = "AC"
     case decimal = "."
@@ -31,9 +31,21 @@ enum KeypadButton: String {
 
     var buttonColor: Color {
         switch self {
-        case .add, .subtract, .mutliply, .divide, .equal: Color.orange
+        case .add, .subtract, .multiply, .divide, .equal: Color.orange
         case .clear, .delete, .swap: Color(.lightGray)
         default: Color(UIColor(red: 55/255.0, green: 55/255.0, blue: 55/255.0, alpha: 1))
+        }
+    }
+}
+
+extension KeypadButton {
+    var operation: Operation {
+        switch self {
+        case .add: .add
+        case .subtract: .subtract
+        case .multiply: .multiply
+        case .divide: .divide
+        default: .none
         }
     }
 }

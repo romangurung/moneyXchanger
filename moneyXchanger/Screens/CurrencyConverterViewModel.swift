@@ -13,7 +13,7 @@ class CurrencyConverterViewModel {
     var selectedCountry: Country = .unitedStates
     var convertedCountry: Country = .spain
     private var exchangeRateResponse: LatestExchangeRatesResponse?
-    var enteredAmount: Double = 10
+    var enteredAmount: Double = 0
 
     var convertedAmount: Double {
         rateConversion * enteredAmount

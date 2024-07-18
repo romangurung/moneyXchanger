@@ -11,18 +11,22 @@ struct KeypadView: View {
 
     private let buttons: [[KeypadButton]] = [
         [.clear, .delete, .swap, .divide],
-        [.seven, .eight, .nine, .mutliply],
+        [.seven, .eight, .nine, .multiply],
         [.four, .five, .six, .subtract],
         [.one, .two, .three, .add],
         [.zero, .decimal, .percent, .equal]
     ]
+
+    @State private var viewModel = KeypadViewModel()
+    @Binding var amount: Double
 
     var body: some View {
         ForEach(buttons, id: \.self) {row in
             HStack(spacing: 12) {
                 ForEach(row, id: \.self) { item in
                     Button(action: {
-                        //                        self.didTap(button: item)
+                        self.viewModel.didTap(button: item)
+                        amount = Double(self.viewModel.runningNumber)!
                     }, label: {
                         Text(item.rawValue)
                             .font(.system(size: 32))
@@ -48,5 +52,5 @@ struct KeypadView: View {
 }
 
 #Preview {
-    KeypadView()
+    KeypadView(amount: .constant(98))
 }

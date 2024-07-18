@@ -11,7 +11,7 @@ struct CurrencySelectionView: View {
 
     @State private var viewModel = CurrencySelectionViewModel()
     @Binding var selectedCountry: Country
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationView {
