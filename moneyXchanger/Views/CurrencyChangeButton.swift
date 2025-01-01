@@ -25,7 +25,7 @@ struct CurrencyChangeButton: View {
                         .font(.system(size: 16))
                 }
                 Spacer()
-                Text(amount, format: .currency(code: selectedCountry.currencyCode))
+                Text(String(format: "%.2f", amount))
                     .bold()
                     .font(.title3)
                     .lineLimit(1)

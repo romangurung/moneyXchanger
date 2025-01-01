@@ -30,20 +30,16 @@ class KeypadViewModel {
             if button == .add {
                 self.currentOperation = .add
                 self.runningNumber = finalValue
-            }
-            else if button == .subtract {
+            } else if button == .subtract {
                 self.currentOperation = .subtract
                 self.runningNumber = finalValue
-            }
-            else if button == .multiply {
+            } else if button == .multiply {
                 self.currentOperation = .multiply
                 self.runningNumber = finalValue
-            }
-            else if button == .divide {
+            } else if button == .divide {
                 self.currentOperation = .divide
                 self.runningNumber = finalValue
-            }
-            else if button == .equal {
+            } else if button == .equal {
                 let runningValue = Double(runningNumber) ?? 0
                 let currentValue = Double(finalValue) ?? 0
                 switch self.currentOperation {
@@ -56,12 +52,21 @@ class KeypadViewModel {
                 }
             }
         case .clear:
-            finalValue = "0"
             runningNumber = "0"
-        case .percent, .swap:
+        case .percent:
+            break
+        case .swap:
             break
         case .delete:
+            deleteLastCharacter()
+        }
+    }
+
+    private func deleteLastCharacter() {
+        if runningNumber.count > 1 {
             runningNumber.removeLast()
+        } else if runningNumber.count == 1 {
+            runningNumber = "0"
         }
     }
 }
