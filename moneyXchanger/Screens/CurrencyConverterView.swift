@@ -14,7 +14,7 @@ struct CurrencyConverterView: View {
         VStack {
             HStack {
                 VStack {
-                    Text("1 \(viewModel.selectedCountry.currencyCode) = \(viewModel.rateConversion) \(viewModel.convertedCountry.currencyCode)")
+                    Text("1.00 \(viewModel.selectedCountry.currencyCode) = \(viewModel.rateConversion) \(viewModel.convertedCountry.currencyCode)")
                     Text(viewModel.timeStamp)
                 }
             }

@@ -19,12 +19,20 @@ class KeypadViewModel {
 
     func didTap(button: KeypadButton) {
         switch button {
-        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .decimal:
+        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
             let number = button.rawValue
             if runningNumber == "0" {
                 runningNumber = number
+            } else if runningNumber.containsDecimalWithTwoDigits {
+                break
             } else {
                 runningNumber += number
+            }
+        case .decimal:
+            if runningNumber.contains(KeypadButton.decimal.rawValue) {
+                break
+            } else {
+                runningNumber += KeypadButton.decimal.rawValue
             }
         case .add, .subtract, .multiply, .divide, .equal:
             if button == .add {
@@ -68,5 +76,13 @@ class KeypadViewModel {
         } else if runningNumber.count == 1 {
             runningNumber = "0"
         }
+    }
+}
+
+extension String {
+
+    var containsDecimalWithTwoDigits: Bool {
+        let regex = "\\.\\d{2}" // Matches a decimal point followed by exactly 2 digits
+        return self.range(of: regex, options: .regularExpression) != nil
     }
 }
