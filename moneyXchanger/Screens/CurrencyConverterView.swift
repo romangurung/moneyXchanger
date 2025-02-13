@@ -21,7 +21,7 @@ struct CurrencyConverterView: View {
             CurrencyChangeButton(selectedCountry: $viewModel.selectedCountry, amount: viewModel.enteredAmount)
             Divider()
             CurrencyChangeButton(selectedCountry: $viewModel.convertedCountry, amount: viewModel.convertedAmount)
-            KeypadView(amount: $viewModel.enteredAmount)
+            KeypadView(amount: $viewModel.enteredAmount, isSwapped: $viewModel.isSwapped)
         }
         .task {
             await viewModel.getLatestRates()

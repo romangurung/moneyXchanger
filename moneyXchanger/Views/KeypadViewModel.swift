@@ -16,6 +16,7 @@ class KeypadViewModel {
     // Expression entered by the user
     var runningNumber = "0"
     var currentOperation: Operation = .none
+    var isSwapped = false
 
     func didTap(button: KeypadButton) {
         switch button {
@@ -55,7 +56,7 @@ class KeypadViewModel {
                 case .subtract: finalValue = "\(runningValue - currentValue)"
                 case .multiply: finalValue = "\(runningValue * currentValue)"
                 case .divide: finalValue = "\(runningValue / currentValue)"
-                case .none:
+                default:
                     break
                 }
             }
@@ -64,7 +65,7 @@ class KeypadViewModel {
         case .percent:
             break
         case .swap:
-            break
+            isSwapped = !isSwapped
         case .delete:
             deleteLastCharacter()
         }
@@ -76,13 +77,5 @@ class KeypadViewModel {
         } else if runningNumber.count == 1 {
             runningNumber = "0"
         }
-    }
-}
-
-extension String {
-
-    var containsDecimalWithTwoDigits: Bool {
-        let regex = "\\.\\d{2}" // Matches a decimal point followed by exactly 2 digits
-        return self.range(of: regex, options: .regularExpression) != nil
     }
 }

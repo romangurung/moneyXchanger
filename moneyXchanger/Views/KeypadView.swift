@@ -19,6 +19,7 @@ struct KeypadView: View {
 
     @State private var viewModel = KeypadViewModel()
     @Binding var amount: String
+    @Binding var isSwapped: Bool
 
     var body: some View {
         ForEach(buttons, id: \.self) {row in
@@ -27,6 +28,7 @@ struct KeypadView: View {
                     Button(action: {
                         self.viewModel.didTap(button: item)
                         amount = self.viewModel.runningNumber
+                        isSwapped = self.viewModel.isSwapped
                     }, label: {
                         Text(item.rawValue)
                             .font(.system(size: 32))
@@ -52,5 +54,5 @@ struct KeypadView: View {
 }
 
 #Preview {
-    KeypadView(amount: .constant("98"))
+    KeypadView(amount: .constant("98"), isSwapped: .constant(false))
 }

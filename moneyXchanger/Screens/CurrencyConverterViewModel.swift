@@ -14,6 +14,17 @@ class CurrencyConverterViewModel {
     var convertedCountry: Country = .spain
     private var exchangeRateResponse: LatestExchangeRatesResponse?
     var enteredAmount: String = "0"
+    var isSwapped: Bool = false {
+        willSet {
+            if newValue != isSwapped {  // Only swap if the value changes
+                swapCountries()
+            }
+        }
+    }
+
+    private func swapCountries() {
+        (selectedCountry, convertedCountry) = (convertedCountry, selectedCountry)
+    }
 
     var convertedAmount: String {
         let convertedNumber = rateConversion * (Double(enteredAmount) ?? 0)

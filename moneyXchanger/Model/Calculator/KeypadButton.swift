@@ -45,11 +45,12 @@ extension KeypadButton {
         case .subtract: .subtract
         case .multiply: .multiply
         case .divide: .divide
+        case .swap: .swap
         default: .none
         }
     }
 }
 
 enum Operation {
-    case add, subtract, multiply, divide, none
+    case add, subtract, multiply, divide, swap, none
 }
