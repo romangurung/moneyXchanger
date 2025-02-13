@@ -13,10 +13,28 @@ class CurrencyConverterViewModel {
     var selectedCountry: Country = .unitedStates
     var convertedCountry: Country = .spain
     private var exchangeRateResponse: LatestExchangeRatesResponse?
-    var enteredAmount: Double = 0
+    var enteredAmount: String = "0"
+    var isSwapped: Bool = false {
+        willSet {
+            if newValue != isSwapped {  // Only swap if the value changes
+                swapCountries()
+            }
+        }
+    }
 
-    var convertedAmount: Double {
-        rateConversion * enteredAmount
+    private func swapCountries() {
+        (selectedCountry, convertedCountry) = (convertedCountry, selectedCountry)
+    }
+
+    var convertedAmount: String {
+        let convertedNumber = rateConversion * (Double(enteredAmount) ?? 0)
+        if convertedNumber.truncatingRemainder(dividingBy: 1) == 0 {
+            // Whole number, ignore decimals
+            return String(format: "%.0f", convertedNumber)
+        } else {
+            // Retain the original string with 2 decimals
+            return String(format: "%.2f", convertedNumber)
+        }
     }
 
     var timeStamp: String {
