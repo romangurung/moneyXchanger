@@ -40,7 +40,8 @@ class KeypadViewModel {
             finalValue = "0"
             currentOperation = .none
         case .percent:
-            break
+            let runningValue = Double(runningNumber) ?? 0
+            runningNumber = (runningValue / 100).decimalOptimizedString
         case .swap:
             isSwapped = !isSwapped
         case .delete:

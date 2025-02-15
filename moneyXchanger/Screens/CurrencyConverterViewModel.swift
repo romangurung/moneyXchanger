@@ -40,13 +40,17 @@ class CurrencyConverterViewModel {
         return "\(formattedDate)"
     }
 
-    var rateConversion: Double {
+    private var rateConversion: Double {
         let rate = exchangeRateResponse?.rates
         guard let selectedCountryRate = rate?.keyValuePairs[selectedCountry.currencyCode],
               let convertedCountryRate = rate?.keyValuePairs[convertedCountry.currencyCode] else {
             return 0
         }
         return (convertedCountryRate / selectedCountryRate)
+    }
+
+    var formattedRateConversion: String {
+        rateConversion.decimalOptimizedString
     }
 
     private let openExchangeService: OpenExchangeRatesServiceable
