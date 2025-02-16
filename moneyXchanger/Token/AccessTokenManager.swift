@@ -50,20 +50,20 @@ extension AccessTokenManager: AccessTokenManagerProtocol {
 
 // MARK: - Token Expiration
 private extension AccessTokenManager {
-    func save(token: APIToken) {
+    private func save(token: APIToken) {
         userDefaults.set(token.expiresAt.timeIntervalSince1970, forKey: AppUserDefaultsKeys.expiresAt)
         userDefaults.set(token.bearerAccessToken, forKey: AppUserDefaultsKeys.bearerAccessToken)
     }
 
-    func getExpirationDate() -> Date {
+    private func getExpirationDate() -> Date {
         Date(timeIntervalSince1970: userDefaults.double(forKey: AppUserDefaultsKeys.expiresAt))
     }
 
-    func getToken() -> String? {
+    private func getToken() -> String? {
         userDefaults.string(forKey: AppUserDefaultsKeys.bearerAccessToken)
     }
 
-    func update() {
+    private func update() {
         accessToken = getToken()
         expiresAt = getExpirationDate()
     }

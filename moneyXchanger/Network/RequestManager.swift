@@ -14,12 +14,12 @@ protocol RequestManagerProtocol {
 final class RequestManager: RequestManagerProtocol {
     let networkManager: NetworkManagerProtocol
     let parser: DataParserProtocol
-    let accessTokenManager: AccessTokenManagerProtocol
+    let accessTokenManager: AccessTokenManagerProtocol?
 
     init(
         networkManager: NetworkManagerProtocol = NetworkManager(),
         parser: DataParserProtocol = DataParser(),
-        accessTokenManager: AccessTokenManagerProtocol = AccessTokenManager()
+        accessTokenManager: AccessTokenManagerProtocol? = nil
     ) {
         self.networkManager = networkManager
         self.parser = parser
@@ -27,6 +27,9 @@ final class RequestManager: RequestManagerProtocol {
     }
 
     func requestAccessToken() async throws -> String {
+        guard let accessTokenManager else {
+            return ""
+        }
         if accessTokenManager.isTokenValid() {
             return accessTokenManager.fetchToken()
         }

@@ -61,9 +61,7 @@ class KeypadViewModel {
         let number = button.rawValue
         if runningNumber == "0" {
             runningNumber = number
-        } else if runningNumber.containsDecimalWithTwoDigits {
-
-        } else {
+        } else if !runningNumber.containsDecimalWithTwoDigits {
             runningNumber += number
         }
     }

@@ -14,6 +14,7 @@ class CurrencyConverterViewModel {
     var convertedCountry: Country = .spain
     private var exchangeRateResponse: LatestExchangeRatesResponse?
     var enteredAmount: String = "0"
+    var isFetchingLatestRates: Bool = false
     var isSwapped: Bool = false {
         willSet {
             // Only swap if the value changes
@@ -60,10 +61,12 @@ class CurrencyConverterViewModel {
     }
 
     func getLatestRates() async {
+        isFetchingLatestRates = true
         do {
             exchangeRateResponse = try await openExchangeService.getLatestExchangeRates()
         } catch {
             exchangeRateResponse = nil
         }
+        isFetchingLatestRates = false
     }
 }

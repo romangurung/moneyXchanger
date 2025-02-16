@@ -20,14 +20,14 @@ struct CurrencyChangeButton: View {
                 VStack(alignment: .leading) {
                     Image(selectedCountry.countryCode)
                         .resizable()
-                        .frame(width: 30, height: 20)
+                        .frame(width: 50, height: 30)
                     Text(selectedCountry.currencyCode)
-                        .font(.system(size: 16))
+                        .font(.system(size: 25))
                 }
                 Spacer()
                 Text(amount)
                     .bold()
-                    .font(.title3)
+                    .font(.system(size: 30))
                     .lineLimit(1)
             }
             .padding(.all)

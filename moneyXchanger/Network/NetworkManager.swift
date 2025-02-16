@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func perform(_ request: RequestProtocol, authToken: String) async throws -> Data
+    func perform(_ request: RequestProtocol, authToken: String?) async throws -> Data
     func requestToken() async throws -> Data
 }
 
@@ -19,10 +19,20 @@ class NetworkManager: NetworkManagerProtocol {
         self.urlSession = urlSession
     }
 
-    func perform(_ request: RequestProtocol, authToken: String = "") async throws -> Data {
-        let (data, response) = try await urlSession.data(for: request.createURLRequest(authToken: authToken))
+    func perform(_ request: RequestProtocol, authToken: String? = nil) async throws -> Data {
+        do {
+            let (data, response) = try await urlSession.data(for: request.createURLRequest(authToken: authToken))
+            return try handleHTTPResponse(data, response)
+        } catch let urlError as URLError {
+            throw handleHTTPError(urlError)
+        } catch {
+            throw NetworkError.unknown
+        }
+    }
+
+    private func handleHTTPResponse(_ data: Data, _ response: URLResponse) throws -> Data {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.requestFailed
+            throw NetworkError.badServerResponse
         }
         switch httpResponse.statusCode {
         case 200..<300:
@@ -33,6 +43,23 @@ class NetworkManager: NetworkManagerProtocol {
             throw NetworkError.serverError
         default:
             throw NetworkError.unknown
+        }
+    }
+
+    private func handleHTTPError(_ urlError: URLError) -> Error {
+        switch urlError.code {
+        case .notConnectedToInternet:
+            NetworkError.notConnectedToInternet
+        case .timedOut:
+            NetworkError.timedOut
+        case .badServerResponse:
+            NetworkError.badServerResponse
+        case .cannotFindHost:
+            NetworkError.cannotFindHost
+        case .cannotConnectToHost:
+            NetworkError.cannotConnectToHost
+        default:
+            NetworkError.unknown
         }
     }
 

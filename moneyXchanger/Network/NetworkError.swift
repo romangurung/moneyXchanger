@@ -15,6 +15,11 @@ enum NetworkError: Error {
     case unexpectedStatusCode
     case requestFailed
     case serverError
+    case notConnectedToInternet
+    case timedOut
+    case badServerResponse
+    case cannotFindHost
+    case cannotConnectToHost
     case unknown
 
     var errorDescription: String {
@@ -27,6 +32,16 @@ enum NetworkError: Error {
             "Request failed"
         case .serverError:
             "Server error"
+        case .notConnectedToInternet:
+            "No internet connection"
+        case .timedOut:
+            "Request timed out"
+        case .badServerResponse:
+            "Bad server response"
+        case .cannotFindHost:
+            "Cannot find host"
+        case .cannotConnectToHost:
+            "Cannot connect to host"
         default:
             "Unknown error"
         }

@@ -25,7 +25,7 @@ extension RequestProtocol {
 }
 
 extension RequestProtocol {
-    func createURLRequest(authToken: String) throws -> URLRequest {
+    func createURLRequest(authToken: String?) throws -> URLRequest {
         var components = URLComponents()
         components.scheme = scheme
         components.host = host
@@ -44,7 +44,7 @@ extension RequestProtocol {
             urlRequest.allHTTPHeaderFields = headers
         }
 
-        if addAuthorizationToken {
+        if addAuthorizationToken, let authToken = authToken {
           urlRequest.setValue(authToken, forHTTPHeaderField: "Authorization")
         }
 
@@ -53,6 +53,9 @@ extension RequestProtocol {
         if let body, !body.isEmpty {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: body)
         }
+        
+        urlRequest.timeoutInterval = 15
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
 
         return urlRequest
     }
