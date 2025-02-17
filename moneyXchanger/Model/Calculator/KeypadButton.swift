@@ -36,6 +36,14 @@ enum KeypadButton: String {
         default: Color(UIColor(red: 55/255.0, green: 55/255.0, blue: 55/255.0, alpha: 1))
         }
     }
+
+    var buttonLabelSize: CGFloat {
+        switch self {
+        case .add, .subtract, .multiply, .divide, .equal: 45
+        case .decimal: 50
+        default: 35
+        }
+    }
 }
 
 extension KeypadButton {

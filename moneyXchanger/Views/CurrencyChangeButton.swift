@@ -27,7 +27,7 @@ struct CurrencyChangeButton: View {
                 Spacer()
                 Text(amount)
                     .bold()
-                    .font(.system(size: 30))
+                    .font(.system(size: 35))
                     .lineLimit(1)
             }
             .padding(.all)

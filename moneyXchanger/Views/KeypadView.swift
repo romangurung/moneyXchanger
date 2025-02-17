@@ -31,7 +31,7 @@ struct KeypadView: View {
                         isSwapped = self.viewModel.isSwapped
                     }, label: {
                         Text(item.rawValue)
-                            .font(.system(size: 32))
+                            .font(.system(size: item.buttonLabelSize))
                             .frame(
                                 width: self.buttonDiameter(),
                                 height: self.buttonDiameter()
