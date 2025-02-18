@@ -13,10 +13,10 @@ struct CurrencyChangeButton: View {
     var amount: String
 
     var body: some View {
-        Button {
-            isShowingSheet.toggle()
-        } label: {
-            HStack {
+        HStack {
+            Button {
+                isShowingSheet.toggle()
+            } label: {
                 VStack(alignment: .leading) {
                     Image(selectedCountry.countryCode)
                         .resizable()
@@ -24,17 +24,18 @@ struct CurrencyChangeButton: View {
                     Text(selectedCountry.currencyCode)
                         .font(.system(size: 25))
                 }
-                Spacer()
-                Text(amount)
-                    .bold()
-                    .font(.system(size: 35))
-                    .lineLimit(1)
             }
-            .padding(.all)
+            .sheet(isPresented: $isShowingSheet) {
+                CurrencySelectionView(selectedCountry: $selectedCountry)
+            }
+            Spacer()
+            Text(amount)
+                .bold()
+                .font(.system(size: 35))
+                .foregroundColor(.blue)
+                .lineLimit(1)
         }
-        .sheet(isPresented: $isShowingSheet) {
-            CurrencySelectionView(selectedCountry: $selectedCountry)
-        }
+        .padding(.all)
     }
 }
 
