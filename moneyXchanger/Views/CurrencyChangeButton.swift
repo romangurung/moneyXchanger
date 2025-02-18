@@ -11,6 +11,7 @@ struct CurrencyChangeButton: View {
     @Binding var selectedCountry: Country
     @State private var isShowingSheet = false
     var amount: String
+    @Binding var scrollToEnd: Bool
 
     var body: some View {
         HStack {
@@ -28,17 +29,38 @@ struct CurrencyChangeButton: View {
             .sheet(isPresented: $isShowingSheet) {
                 CurrencySelectionView(selectedCountry: $selectedCountry)
             }
-            Spacer()
-            Text(amount)
-                .bold()
-                .font(.system(size: 35))
-                .foregroundColor(.blue)
-                .lineLimit(1)
+
+            GeometryReader { geometry in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    ScrollViewReader { proxy in
+                        HStack {
+                            Text(amount)
+                                .bold()
+                                .font(.system(size: 35))
+                                .foregroundColor(.blue)
+                                .lineLimit(1)
+                                .frame(minWidth: geometry.size.width, maxWidth: .infinity, alignment: .trailing)
+                                .id("End")
+                        }
+                        .onChange(of: scrollToEnd) {
+                            scrollToEnd(proxy: proxy)
+                        }
+                    }
+                }
+            }
+            .frame(height: 60)
         }
         .padding(.all)
+    }
+
+    // Scroll function
+    private func scrollToEnd(proxy: ScrollViewProxy) {
+        withAnimation {
+            proxy.scrollTo("End", anchor: .trailing) // Scroll to last item
+        }
     }
 }
 
 #Preview {
-    CurrencyChangeButton(selectedCountry: .constant(.unitedStates), amount: "123.0")
+    CurrencyChangeButton(selectedCountry: .constant(.unitedStates), amount: "123.0", scrollToEnd: .constant(false))
 }

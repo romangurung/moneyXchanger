@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrencyConverterView: View {
     @State private var viewModel = CurrencyConverterViewModel(openExchangeService: OpenExchangeRatesService())
+    @State private var scrollToEnd: Bool = false
 
     var body: some View {
         VStack {
@@ -43,11 +44,17 @@ struct CurrencyConverterView: View {
 
             }
             Divider()
-            CurrencyChangeButton(selectedCountry: $viewModel.selectedCountry, amount: viewModel.enteredAmount)
+            CurrencyChangeButton(selectedCountry: $viewModel.selectedCountry,
+                                 amount: viewModel.enteredAmount,
+                                 scrollToEnd: $scrollToEnd)
             Divider()
-            CurrencyChangeButton(selectedCountry: $viewModel.convertedCountry, amount: viewModel.convertedAmount)
+            CurrencyChangeButton(selectedCountry: $viewModel.convertedCountry,
+                                 amount: viewModel.convertedAmount,
+                                 scrollToEnd: $scrollToEnd)
             Divider()
-            KeypadView(amount: $viewModel.enteredAmount, isSwapped: $viewModel.isSwapped)
+            KeypadView(amount: $viewModel.enteredAmount,
+                       isSwapped: $viewModel.isSwapped,
+                       scrollToEnd: $scrollToEnd)
         }
         .task {
             await viewModel.getLatestRates()

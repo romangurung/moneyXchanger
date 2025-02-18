@@ -20,6 +20,7 @@ struct KeypadView: View {
     @State private var viewModel = KeypadViewModel()
     @Binding var amount: String
     @Binding var isSwapped: Bool
+    @Binding var scrollToEnd: Bool
 
     var body: some View {
         ForEach(buttons, id: \.self) {row in
@@ -29,6 +30,7 @@ struct KeypadView: View {
                         self.viewModel.didTap(button: item)
                         amount = self.viewModel.runningNumber
                         isSwapped = self.viewModel.isSwapped
+                        scrollToEnd.toggle()
                     }, label: {
                         Text(item.rawValue)
                             .font(.system(size: item.buttonLabelSize))
@@ -54,5 +56,5 @@ struct KeypadView: View {
 }
 
 #Preview {
-    KeypadView(amount: .constant("98"), isSwapped: .constant(false))
+    KeypadView(amount: .constant("98"), isSwapped: .constant(false), scrollToEnd: .constant(false))
 }
