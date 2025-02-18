@@ -10,13 +10,6 @@ import Foundation
 @Observable
 class KeypadViewModel {
 
-    // Final calculated value
-    @ObservationIgnored
-    private var finalValue = "0"
-
-    @ObservationIgnored
-    private var currentOperation: Operation = .none
-
     // Expression entered by the user
     var runningNumber = "0"
     var isSwapped = false
@@ -28,22 +21,21 @@ class KeypadViewModel {
         case .decimal:
             handleDecimalButtonTapped()
         case .add, .subtract, .multiply, .divide:
-            if currentOperation == .none {
-                finalValue = runningNumber
+            if runningNumber.isLastCharacterMathOperator {
+                runningNumber.removeLast()
+                runningNumber += button.rawValue
+            } else {
+                runningNumber += button.rawValue
             }
-            runningNumber = "0"
-            currentOperation = button.operation
         case .equal:
-            handleEqualOperator()
+            runningNumber = evaluateExpression(runningNumber)
         case .clear:
             runningNumber = "0"
-            finalValue = "0"
-            currentOperation = .none
         case .percent:
             let runningValue = Double(runningNumber) ?? 0
             runningNumber = (runningValue / 100).decimalOptimizedString
         case .swap:
-            isSwapped = !isSwapped
+            isSwapped.toggle()
         case .delete:
             deleteLastCharacter()
         }
@@ -66,33 +58,26 @@ class KeypadViewModel {
         }
     }
 
-    private func handleEqualOperator() {
-        let previousValue = Double(finalValue) ?? 0
-        let runningValue = Double(runningNumber) ?? 0
-        switch self.currentOperation {
-        case .add:
-            finalValue = (previousValue + runningValue).decimalOptimizedString
-            runningNumber = finalValue
-        case .subtract:
-            finalValue = (previousValue - runningValue).decimalOptimizedString
-            runningNumber = finalValue
-        case .multiply:
-            finalValue = (previousValue * runningValue).decimalOptimizedString
-            runningNumber = finalValue
-        case .divide:
-            finalValue = (previousValue / runningValue).decimalOptimizedString
-            runningNumber = finalValue
-        default:
-            break
-        }
-        currentOperation = .none
-    }
-
     private func deleteLastCharacter() {
         if runningNumber.count > 1 {
             runningNumber.removeLast()
         } else if runningNumber.count == 1 {
             runningNumber = "0"
         }
+    }
+
+    func evaluateExpression(_ expression: String) -> String {
+        let exp = NSExpression(format: expression)
+
+        if let result = exp.expressionValue(with: nil, context: nil) as? Double {
+            return "\(result)"
+        }
+        return "-"
+    }
+}
+
+extension String {
+    var isLastCharacterMathOperator: Bool {
+        self.last == "+" || self.last == "-" || self.last == "x" || self.last == "/"
     }
 }
