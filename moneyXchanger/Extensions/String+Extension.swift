@@ -8,7 +8,14 @@
 extension String {
 
     var containsDecimalWithTwoDigits: Bool {
-        let regex = "\\.\\d{2}" // Matches a decimal point followed by exactly 2 digits
+        // Matches a decimal point followed by exactly 2 digits
+        let regex = "\\.\\d{2}"
         return self.range(of: regex, options: .regularExpression) != nil
+    }
+
+    func replacingOccurrences(of replacements: [String: String]) -> String {
+        return replacements.reduce(self) { result, pair in
+            result.replacingOccurrences(of: pair.key, with: pair.value)
+        }
     }
 }

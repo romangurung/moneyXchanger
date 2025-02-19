@@ -39,26 +39,22 @@ enum KeypadButton: String {
 
     var buttonLabelSize: CGFloat {
         switch self {
-        case .add, .subtract, .multiply, .divide, .equal: 45
-        case .decimal: 50
+        case .decimal: 10
         default: 35
         }
     }
-}
 
-extension KeypadButton {
-    var operation: Operation {
+    var buttonLabel: some View {
         switch self {
-        case .add: .add
-        case .subtract: .subtract
-        case .multiply: .multiply
-        case .divide: .divide
-        case .swap: .swap
-        default: .none
+        case .add: AnyView(Image(systemName: "plus"))
+        case .subtract: AnyView(Image(systemName: "minus"))
+        case .divide: AnyView(Image(systemName: "divide"))
+        case .multiply: AnyView(Image(systemName: "multiply"))
+        case .equal: AnyView(Image(systemName: "equal"))
+        case .swap: AnyView(Image(systemName: "arrow.up.arrow.down"))
+        case .delete: AnyView(Image(systemName: "delete.backward"))
+        case .decimal: AnyView(Image(systemName: "circle.fill"))
+        default: AnyView(Text(rawValue))
         }
     }
-}
-
-enum Operation {
-    case add, subtract, multiply, divide, swap, none
 }

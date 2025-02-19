@@ -32,7 +32,7 @@ struct KeypadView: View {
                         isSwapped = self.viewModel.isSwapped
                         scrollToEnd.toggle()
                     }, label: {
-                        Text(item.rawValue)
+                        item.buttonLabel
                             .font(.system(size: item.buttonLabelSize))
                             .frame(
                                 width: self.buttonDiameter(),
