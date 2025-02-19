@@ -16,4 +16,12 @@ extension Double {
             return String(format: "%.2f", self)  // Show 2 decimal places
         }
     }
+
+    var formattedString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 4  // Adjust precision as needed
+        formatter.usesGroupingSeparator = false  // No commas in numbers
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
+    }
 }

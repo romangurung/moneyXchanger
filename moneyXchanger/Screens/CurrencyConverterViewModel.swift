@@ -29,8 +29,12 @@ class CurrencyConverterViewModel {
     }
 
     var convertedAmount: String {
-        let convertedNumber = rateConversion * (Double(enteredAmount) ?? 0)
-        return convertedNumber.decimalOptimizedString
+        guard let enteredAmountString = Double(enteredAmount) else {
+            return "---"
+
+        }
+        let convertedNumber = rateConversion * enteredAmountString
+        return convertedNumber.formattedString
     }
 
     var timeStamp: String {
@@ -51,7 +55,7 @@ class CurrencyConverterViewModel {
     }
 
     var formattedRateConversion: String {
-        rateConversion.decimalOptimizedString
+        rateConversion.formattedString
     }
 
     private let openExchangeService: OpenExchangeRatesServiceable

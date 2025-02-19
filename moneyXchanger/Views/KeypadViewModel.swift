@@ -30,7 +30,7 @@ class KeypadViewModel {
         case .clear:
             runningNumber = "0"
         case .percent:
-            handlePercentButtonTapped()
+            runningNumber = replaceLastNumberWithPercentage(in: runningNumber)
         case .swap:
             isSwapped.toggle()
         case .delete:
@@ -60,16 +60,21 @@ class KeypadViewModel {
         }
     }
 
-    private func handlePercentButtonTapped() {
-        let pattern = #"[-+]?\d*\.?\d+$"#  // Find the last number (supports decimals)
-
-        guard let range = runningNumber.range(of: pattern, options: .regularExpression),
-              let lastNumber = Double(runningNumber[range]) else {
-            return  // Return original if no number found
+    func replaceLastNumberWithPercentage(in expression: String) -> String {
+        var expression = expression
+        if expression.endsWithMathOperator {
+            expression.removeLast()
         }
-
-        let percentageValue = lastNumber / 100  // Convert to percentage
-        runningNumber = runningNumber.replacingCharacters(in: range, with: "\(percentageValue)")
+        let pattern = #"\d*\.?\d+$"# // Find the last number (supports decimals), without preceding operators
+        guard let range = expression.range(of: pattern, options: .regularExpression),
+              let lastNumber = Double(expression[range]) else {
+            return expression // Return original if no number found
+        }
+        if lastNumber < 1 {
+            return expression
+        }
+        let percentageValue = (lastNumber / 100).formattedString // Convert to percentage
+        return expression.replacingCharacters(in: range, with: percentageValue)
     }
 
     private func deleteLastCharacter() {
@@ -89,9 +94,9 @@ class KeypadViewModel {
         let exp = NSExpression(format: trimmedExpression)
 
         if let result = exp.expressionValue(with: nil, context: nil) as? Double {
-            return formatNumber(result)
+            return result.formattedString
         }
-        return "-"
+        return "---"
     }
 
     private func extractLastNumber(from expression: String) -> String? {
@@ -102,14 +107,6 @@ class KeypadViewModel {
             return String(expression[range])
         }
         return nil
-    }
-
-    func formatNumber(_ number: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 10  // Adjust precision as needed
-        formatter.usesGroupingSeparator = false  // No commas in numbers
-        return formatter.string(from: NSNumber(value: number)) ?? "\(number)"
     }
 }
 
