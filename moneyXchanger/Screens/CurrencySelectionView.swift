@@ -18,6 +18,7 @@ struct CurrencySelectionView: View {
             List {
                 ForEach(viewModel.searchCountries, id: \.self) { country in
                     CurrencySelectionListCell(country: country)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             self.selectedCountry = country
                             dismiss()
