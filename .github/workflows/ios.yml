@@ -1,44 +1,77 @@
-name: iOS starter workflow
+name: iOS CI/CD with Fastlane & Tests (Manual Deployment)
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main  # Run tests on push to main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main  # Run tests on PRs to main
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
 
 jobs:
-  build:
-    name: Build and Test default scheme using any available iPhone simulator
+  test:
     runs-on: macos-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Set Default Scheme
+
+      - name: Set Up Ruby & Bundler
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
+          gem install bundler:2.4.22
+          bundle install
+
+      - name: Install Dependencies
+        run: |
+          pod install --project-directory=. || echo "No CocoaPods found, skipping..."
+
+      - name: Run UI & Unit Tests
+        run: bundle exec fastlane test
+
+  deploy_testflight:
+    if: github.event_name == 'workflow_dispatch'  # Run only when manually triggered
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Ruby & Bundler
+        run: |
+          gem install bundler:2.4.22
+          bundle install
+
+      - name: Install Dependencies
+        run: |
+          pod install --project-directory=. || echo "No CocoaPods found, skipping..."
+
+      - name: Build & Deploy to TestFlight
         env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_TEAM_ID: ${{ secrets.FASTLANE_TEAM_ID }}
+        run: bundle exec fastlane beta
+
+  deploy_appstore:
+    if: github.event_name == 'workflow_dispatch'  # Run only when manually triggered
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Ruby & Bundler
         run: |
-          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-      - name: Test
+          gem install bundler:2.4.22
+          bundle install
+
+      - name: Install Dependencies
+        run: |
+          pod install --project-directory=. || echo "No CocoaPods found, skipping..."
+
+      - name: Build & Deploy to App Store
         env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
-        run: |
-          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_TEAM_ID: ${{ secrets.FASTLANE_TEAM_ID }}
+        run: bundle exec fastlane appstore
