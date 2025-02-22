@@ -60,7 +60,7 @@ class KeypadViewModel {
         }
     }
 
-    func replaceLastNumberWithPercentage(in expression: String) -> String {
+    private func replaceLastNumberWithPercentage(in expression: String) -> String {
         var expression = expression
         if expression.endsWithMathOperator {
             expression.removeLast()
