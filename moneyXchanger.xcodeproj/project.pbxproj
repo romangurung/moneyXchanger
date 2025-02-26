@@ -40,7 +40,6 @@
 		1CE335272B4B5B3500CABBE2 /* MoneyXchangerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335262B4B5B3500CABBE2 /* MoneyXchangerApp.swift */; };
 		1CE3352B2B4B5B3600CABBE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */; };
 		1CE3352E2B4B5B3600CABBE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE3352D2B4B5B3600CABBE2 /* Preview Assets.xcassets */; };
-		1CE335382B4B5B3600CABBE2 /* MoneyXchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */; };
 		1CE335422B4B5B3600CABBE2 /* MoneyXchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335412B4B5B3600CABBE2 /* MoneyXchangerUITests.swift */; };
 		1CE335442B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE335432B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -100,7 +99,6 @@
 		1CE3352A2B4B5B3600CABBE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CE3352D2B4B5B3600CABBE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1CE335332B4B5B3600CABBE2 /* moneyXchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moneyXchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerTests.swift; sourceTree = "<group>"; };
 		1CE3353D2B4B5B3600CABBE2 /* moneyXchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moneyXchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE335412B4B5B3600CABBE2 /* MoneyXchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerUITests.swift; sourceTree = "<group>"; };
 		1CE335432B4B5B3600CABBE2 /* MoneyXchangerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyXchangerUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 		1CE335362B4B5B3600CABBE2 /* moneyXchangerTests */ = {
 			isa = PBXGroup;
 			children = (
-				1CE335372B4B5B3600CABBE2 /* MoneyXchangerTests.swift */,
 				1C841A1B2D6806950052EBE7 /* KeypadViewModelTests.swift */,
 			);
 			path = moneyXchangerTests;
@@ -500,7 +497,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C841A1C2D6806950052EBE7 /* KeypadViewModelTests.swift in Sources */,
-				1CE335382B4B5B3600CABBE2 /* MoneyXchangerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
