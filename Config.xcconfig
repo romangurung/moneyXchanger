@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  moneyXchanger
+//
+//  Created by Roman Gurung on 3/2/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_ID = $(APP_ID)
